@@ -12,6 +12,13 @@ public class Issue {
   public Issue() {
   }
 
+  public Issue(Long id, String title, String description, IssueStatus status) {
+    this.id = id;
+    this.title = title;
+    this.description = description;
+    this.status = status;
+  }
+
   public Long getId() {
     return id;
   }
