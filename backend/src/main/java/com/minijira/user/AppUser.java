@@ -4,7 +4,7 @@ import java.time.Instant;
 
 import org.springframework.data.annotation.Id;
 
-public class User {
+public class AppUser {
   @Id
   private Long id;
   private String email;
@@ -12,11 +12,11 @@ public class User {
   private String passwordHash;
   private Instant createdAt;
 
-  public User() {
+  public AppUser() {
 
   }
 
-  public User(Long id, String email, String name, String passwordHash, Instant createdAt) {
+  public AppUser(Long id, String email, String name, String passwordHash, Instant createdAt) {
     this.id = id;
     this.email = email;
     this.name = name;

@@ -13,15 +13,15 @@ public class UserService {
     this.userRepository = userRepository;
   }
 
-  public List<User> findAllUsers() {
+  public List<AppUser> findAllUsers() {
     return userRepository.findAll();
   }
 
-  public User findById(Long id) {
+  public AppUser findById(Long id) {
     return userRepository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
   }
 
-  public void createUser(User user) {
+  public void createUser(AppUser user) {
     userRepository.save(user);
   }
 
@@ -30,6 +30,5 @@ public class UserService {
       throw new UserNotFoundException(id);
     }
     userRepository.deleteById(id);
-
   }
 }

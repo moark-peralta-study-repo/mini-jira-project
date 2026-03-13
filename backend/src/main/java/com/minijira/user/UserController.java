@@ -24,18 +24,18 @@ public class UserController {
   }
 
   @GetMapping
-  List<User> findAllUsers() {
+  List<AppUser> findAllUsers() {
     return userService.findAllUsers();
   }
 
   @PostMapping
   @ResponseStatus(HttpStatus.CREATED)
-  void createUser(@RequestBody @Valid User user) {
+  void createUser(@RequestBody @Valid AppUser user) {
     userService.createUser(user);
   }
 
   @GetMapping("/{id}")
-  User findById(@PathVariable Long id) {
+  AppUser findById(@PathVariable Long id) {
     return userService.findById(id);
   }
 
