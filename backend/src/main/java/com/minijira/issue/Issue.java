@@ -9,16 +9,21 @@ public class Issue {
   private String description;
   private IssueStatus status;
   private Integer position;
+  private Long projectId;
+  private Long asigneeId;
 
   public Issue() {
   }
 
-  public Issue(Long id, String title, String description, IssueStatus status, Integer position) {
+  public Issue(Long id, String title, String description, IssueStatus status, Integer position, Long projectId,
+      Integer userId) {
     this.id = id;
     this.title = title;
     this.description = description;
     this.status = status;
     this.position = position;
+    this.projectId = projectId;
+    this.asigneeId = asigneeId;
   }
 
   public Long getId() {
@@ -60,4 +65,21 @@ public class Issue {
   public void setPosition(Integer position) {
     this.position = position;
   }
+
+  public Long getProjectId() {
+    return projectId;
+  }
+
+  public void setProjectId(Long projectId) {
+    this.projectId = projectId;
+  }
+
+  public Long getAsigneeId() {
+    return asigneeId;
+  }
+
+  public void setAsigneeId(Long asigneeId) {
+    this.asigneeId = asigneeId;
+  }
+
 }
