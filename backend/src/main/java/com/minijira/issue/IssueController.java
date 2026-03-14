@@ -45,4 +45,5 @@ public class IssueController {
   void deleteIssue(@PathVariable Long id) {
     issueService.deleteIssue(id);
   }
+
 }

@@ -4,6 +4,9 @@ import java.util.List;
 
 import jakarta.validation.Valid;
 
+import com.minijira.issue.Issue;
+import com.minijira.issue.IssueService;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,9 +21,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/users")
 public class UserController {
   private final UserService userService;
+  private final IssueService issueService;
 
-  public UserController(UserService userService) {
+  public UserController(UserService userService, IssueService issueService) {
     this.userService = userService;
+    this.issueService = issueService;
   }
 
   @GetMapping
@@ -43,5 +48,10 @@ public class UserController {
   @ResponseStatus(HttpStatus.NO_CONTENT)
   void deleteUser(@PathVariable Long id) {
     userService.deleteUser(id);
+  }
+
+  @GetMapping("/user/{asigneeId}/issues")
+  List<Issue> findIssueByAsigneeId(@PathVariable Long asigneeId) {
+    return issueService.findIssueByAsigneeId(asigneeId);
   }
 }

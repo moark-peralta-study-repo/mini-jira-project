@@ -32,4 +32,12 @@ public class IssueService {
     }
     issueRepository.deleteById(id);
   }
+
+  public List<Issue> findIssuesByProjectId(Long projectId) {
+    return issueRepository.findIssuesByProjectId(projectId);
+  }
+
+  public List<Issue> findIssueByAsigneeId(Long asigneeId) {
+    return issueRepository.findIssueByAsigneeId(asigneeId);
+  }
 }
