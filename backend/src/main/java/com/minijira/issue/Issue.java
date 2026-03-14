@@ -8,15 +8,17 @@ public class Issue {
   private String title;
   private String description;
   private IssueStatus status;
+  private Integer position;
 
   public Issue() {
   }
 
-  public Issue(Long id, String title, String description, IssueStatus status) {
+  public Issue(Long id, String title, String description, IssueStatus status, Integer position) {
     this.id = id;
     this.title = title;
     this.description = description;
     this.status = status;
+    this.position = position;
   }
 
   public Long getId() {
@@ -49,5 +51,13 @@ public class Issue {
 
   public void setStatus(IssueStatus status) {
     this.status = status;
+  }
+
+  public Integer getPosition() {
+    return position;
+  }
+
+  public void setPosition(Integer position) {
+    this.position = position;
   }
 }
