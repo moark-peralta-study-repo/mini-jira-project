@@ -37,7 +37,7 @@ public class IssueService {
     issueRepository.deleteById(id);
   }
 
-  public Issue assignIssueToUser(Long issueId, Long userId) {
+  public Issue assignIssue(Long issueId, Long userId) {
     Issue issue = findById(issueId);
 
     if (userId != null) {

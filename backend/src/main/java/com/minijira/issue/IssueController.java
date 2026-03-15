@@ -51,6 +51,6 @@ public class IssueController {
 
   @PatchMapping("/{issueId}/assign")
   Issue assignIssueToUser(@PathVariable Long issueId, @RequestBody @Valid AssignIssueRequest request) {
-    return issueService.assignIssueToUser(issueId, request.getAssigneeId());
+    return issueService.assignIssue(issueId, request.getAssigneeId());
   }
 }
