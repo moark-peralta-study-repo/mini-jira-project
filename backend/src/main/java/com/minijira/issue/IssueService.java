@@ -47,4 +47,12 @@ public class IssueService {
     issue.setAssigneeId(userId);
     return issueRepository.save(issue);
   }
+
+  public Issue updateIssueStatus(Long issueId, IssueStatus status) {
+    Issue issue = findById(issueId);
+
+    issue.setStatus(status);
+
+    return issueRepository.save(issue);
+  }
 }

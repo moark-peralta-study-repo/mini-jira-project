@@ -5,6 +5,7 @@ import java.util.List;
 import jakarta.validation.Valid;
 
 import com.minijira.issue.dto.AssignIssueRequest;
+import com.minijira.issue.dto.UpdateIssueStatusRequest;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -52,5 +53,10 @@ public class IssueController {
   @PatchMapping("/{issueId}/assign")
   Issue assignIssueToUser(@PathVariable Long issueId, @RequestBody @Valid AssignIssueRequest request) {
     return issueService.assignIssue(issueId, request.getAssigneeId());
+  }
+
+  @PatchMapping("/{issueId}/status")
+  Issue updateIssueStatus(@PathVariable Long issueId, @RequestBody @Valid UpdateIssueStatusRequest request) {
+    return issueService.updateIssueStatus(issueId, request.getStatus());
   }
 }
