@@ -2,15 +2,19 @@ package com.minijira.issue;
 
 import java.util.List;
 
+import com.minijira.user.UserService;
+
 import org.springframework.stereotype.Service;
 
 @Service
 public class IssueService {
 
   private final IssueRepository issueRepository;
+  private final UserService userService;
 
-  public IssueService(IssueRepository issueRepository) {
+  public IssueService(IssueRepository issueRepository, UserService userService) {
     this.issueRepository = issueRepository;
+    this.userService = userService;
   }
 
   public List<Issue> findAllIssues() {
@@ -31,5 +35,24 @@ public class IssueService {
       throw new IssueNotFoundException(id);
     }
     issueRepository.deleteById(id);
+  }
+
+  public Issue assignIssue(Long issueId, Long userId) {
+    Issue issue = findById(issueId);
+
+    if (userId != null) {
+      userService.findById(userId);
+    }
+
+    issue.setAssigneeId(userId);
+    return issueRepository.save(issue);
+  }
+
+  public Issue updateIssueStatus(Long issueId, IssueStatus status) {
+    Issue issue = findById(issueId);
+
+    issue.setStatus(status);
+
+    return issueRepository.save(issue);
   }
 }

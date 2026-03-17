@@ -4,9 +4,13 @@ import java.util.List;
 
 import jakarta.validation.Valid;
 
+import com.minijira.issue.dto.AssignIssueRequest;
+import com.minijira.issue.dto.UpdateIssueStatusRequest;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -44,5 +48,15 @@ public class IssueController {
   @ResponseStatus(HttpStatus.NO_CONTENT)
   void deleteIssue(@PathVariable Long id) {
     issueService.deleteIssue(id);
+  }
+
+  @PatchMapping("/{issueId}/assign")
+  Issue assignIssueToUser(@PathVariable Long issueId, @RequestBody @Valid AssignIssueRequest request) {
+    return issueService.assignIssue(issueId, request.getAssigneeId());
+  }
+
+  @PatchMapping("/{issueId}/status")
+  Issue updateIssueStatus(@PathVariable Long issueId, @RequestBody @Valid UpdateIssueStatusRequest request) {
+    return issueService.updateIssueStatus(issueId, request.getStatus());
   }
 }

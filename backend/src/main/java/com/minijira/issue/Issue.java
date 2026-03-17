@@ -10,7 +10,7 @@ public class Issue {
   private IssueStatus status;
   private Integer position;
   private Long projectId;
-  private Long asigneeId;
+  private Long assigneeId;
 
   public Issue() {
   }
@@ -23,7 +23,7 @@ public class Issue {
     this.status = status;
     this.position = position;
     this.projectId = projectId;
-    this.asigneeId = asigneeId;
+    this.assigneeId = assigneeId;
   }
 
   public Long getId() {
@@ -74,12 +74,12 @@ public class Issue {
     this.projectId = projectId;
   }
 
-  public Long getAsigneeId() {
-    return asigneeId;
+  public Long getAssigneeId() {
+    return assigneeId;
   }
 
-  public void setAsigneeId(Long asigneeId) {
-    this.asigneeId = asigneeId;
+  public void setAssigneeId(Long asigneeId) {
+    this.assigneeId = asigneeId;
   }
 
 }
