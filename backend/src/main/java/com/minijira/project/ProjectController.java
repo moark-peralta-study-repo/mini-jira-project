@@ -5,6 +5,9 @@ import java.util.List;
 
 import jakarta.validation.Valid;
 
+import com.minijira.issue.IssueService;
+import com.minijira.project.dto.ProjectBoardResponse;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,9 +22,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProjectController {
 
   private final ProjectService projectService;
+  private final IssueService issueService;
 
-  public ProjectController(ProjectService projectService) {
+  public ProjectController(ProjectService projectService, IssueService issueService) {
     this.projectService = projectService;
+    this.issueService = issueService;
   }
 
   @GetMapping
@@ -43,5 +48,10 @@ public class ProjectController {
 
   void deleteProject(@PathVariable Long id) {
     projectService.deleteProject(id);
+  }
+
+  @GetMapping("/{projectId}/board")
+  ProjectBoardResponse getProjectBoard(@PathVariable Long projectId) {
+    return issueService.getProjectBoard(projectId);
   }
 }

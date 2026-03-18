@@ -10,6 +10,12 @@ public class ProjectBoardResponse {
   private List<Issue> inProgress;
   private List<Issue> done;
 
+  public ProjectBoardResponse(List<Issue> todo, List<Issue> inProgress, List<Issue> done) {
+    this.todo = todo;
+    this.inProgress = inProgress;
+    this.done = done;
+  }
+
   public List<Issue> getTodo() {
     return todo;
   }
