@@ -31,8 +31,15 @@ public class IssueService {
         .orElseThrow(() -> new IssueNotFoundException(id));
   }
 
-  public void createIssue(Issue issue) {
-    issueRepository.save(issue);
+  public Issue createIssue(Issue issue) {
+    projectService.findById(issue.getProjectId());
+
+    issue.setStatus(IssueStatus.TODO);
+    int position = issueRepository.findByProjectId(issue.getProjectId()).size();
+
+    issue.setPosition(position);
+
+    return issueRepository.save(issue);
   }
 
   public void deleteIssue(Long id) {
