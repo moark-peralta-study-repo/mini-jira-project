@@ -5,6 +5,7 @@ import java.util.List;
 import jakarta.validation.Valid;
 
 import com.minijira.issue.dto.AssignIssueRequest;
+import com.minijira.issue.dto.MoveIssueRequest;
 import com.minijira.issue.dto.UpdateIssueStatusRequest;
 
 import org.springframework.http.HttpStatus;
@@ -58,5 +59,10 @@ public class IssueController {
   @PatchMapping("/{issueId}/status")
   Issue updateIssueStatus(@PathVariable Long issueId, @RequestBody @Valid UpdateIssueStatusRequest request) {
     return issueService.updateIssueStatus(issueId, request.getStatus());
+  }
+
+  @PatchMapping("/{issueId}/move")
+  Issue moveIssue(@PathVariable @Valid Long issueId, @RequestBody MoveIssueRequest request) {
+    return issueService.moveIssue(issueId, request.getNewStatus(), request.getNewPosition());
   }
 }

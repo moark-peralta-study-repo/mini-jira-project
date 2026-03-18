@@ -93,4 +93,58 @@ public class IssueService {
 
     return new ProjectBoardResponse(todo, inProgress, done);
   }
+
+  public Issue moveIssue(Long issueId, IssueStatus newStatus, Integer newPosition) {
+    Issue issue = findById(issueId);
+
+    IssueStatus oldStatus = issue.getStatus();
+    Integer oldPosition = issue.getPosition();
+    Long projectId = issue.getProjectId();
+
+    List<Issue> oldColumn = issueRepository.findByProjectIdAndStatus(projectId, oldStatus);
+    List<Issue> newColumn = issueRepository.findByProjectIdAndStatus(projectId, newStatus);
+
+    if (oldStatus == newStatus) {
+
+      for (Issue i : oldColumn) {
+        if (i.getId().equals(issueId))
+          continue;
+
+        if (oldPosition < newPosition) {
+          if (i.getPosition() > oldPosition && i.getPosition() <= newPosition) {
+            i.setPosition(i.getPosition() - 1);
+          }
+        }
+
+        else if (oldPosition > newPosition) {
+          if (i.getPosition() >= newPosition && i.getPosition() < oldPosition) {
+            i.setPosition(i.getPosition() + 1);
+          }
+        }
+      }
+    } else {
+      for (Issue i : oldColumn) {
+        if (i.getId().equals(issueId))
+          continue;
+
+        if (i.getPosition() > oldPosition) {
+          i.setPosition(i.getPosition() - 1);
+        }
+      }
+
+      for (Issue i : newColumn) {
+        if (i.getPosition() >= newPosition) {
+          i.setPosition(i.getPosition() + 1);
+        }
+      }
+      issue.setStatus(newStatus);
+    }
+
+    issue.setPosition(newPosition);
+
+    issueRepository.saveAll(oldColumn);
+    issueRepository.saveAll(newColumn);
+
+    return issueRepository.save(issue);
+  }
 }
