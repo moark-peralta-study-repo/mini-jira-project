@@ -16,7 +16,7 @@ public class Issue {
   }
 
   public Issue(Long id, String title, String description, IssueStatus status, Integer position, Long projectId,
-      Integer userId) {
+      Long assigneeId) {
     this.id = id;
     this.title = title;
     this.description = description;
