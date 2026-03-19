@@ -53,16 +53,16 @@ public class IssueController {
 
   @PatchMapping("/{issueId}/assign")
   Issue assignIssueToUser(@PathVariable Long issueId, @RequestBody @Valid AssignIssueRequest request) {
-    return issueService.assignIssue(issueId, request.getAssigneeId());
+    return issueService.assignIssue(issueId, request.assigneeId());
   }
 
   @PatchMapping("/{issueId}/status")
   Issue updateIssueStatus(@PathVariable Long issueId, @RequestBody @Valid UpdateIssueStatusRequest request) {
-    return issueService.updateIssueStatus(issueId, request.getStatus());
+    return issueService.updateIssueStatus(issueId, request.status());
   }
 
   @PatchMapping("/{issueId}/move")
   Issue moveIssue(@PathVariable @Valid Long issueId, @RequestBody MoveIssueRequest request) {
-    return issueService.moveIssue(issueId, request.getNewStatus(), request.getNewPosition());
+    return issueService.moveIssue(issueId, request.newStatus(), request.newPosition());
   }
 }

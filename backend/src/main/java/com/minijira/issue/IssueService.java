@@ -43,10 +43,26 @@ public class IssueService {
   }
 
   public void deleteIssue(Long id) {
-    if (!issueRepository.existsById(id)) {
-      throw new IssueNotFoundException(id);
+    Issue issue = findById(id);
+
+    Long projectId = issue.getProjectId();
+    IssueStatus status = issue.getStatus();
+    Integer deletedPosition = issue.getPosition();
+
+    List<Issue> column = issueRepository.findByProjectIdAndStatus(projectId, status);
+
+    for (Issue i : column) {
+      if (i.getId().equals(id))
+        continue;
+
+      if (i.getPosition() > deletedPosition) {
+        i.setPosition(i.getPosition() - 1);
+      }
     }
+
     issueRepository.deleteById(id);
+
+    issueRepository.saveAll(column);
   }
 
   public Issue assignIssue(Long issueId, Long userId) {
