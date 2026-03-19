@@ -35,7 +35,7 @@ public class IssueService {
     projectService.findById(issue.getProjectId());
 
     issue.setStatus(IssueStatus.TODO);
-    int position = issueRepository.findByProjectId(issue.getProjectId()).size();
+    int position = issueRepository.findByProjectIdAndStatus(issue.getProjectId(), issue.getStatus()).size();
 
     issue.setPosition(position);
 
