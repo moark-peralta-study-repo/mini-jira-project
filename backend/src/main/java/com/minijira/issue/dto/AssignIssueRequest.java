@@ -1,4 +1,6 @@
 package com.minijira.issue.dto;
 
-public record AssignIssueRequest(Long assigneeId) {
+import jakarta.validation.Valid;
+
+public record AssignIssueRequest(@Valid Long assigneeId) {
 }
