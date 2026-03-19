@@ -87,7 +87,7 @@ public class IssueService {
   public ProjectBoardResponse getProjectBoard(Long projectId) {
     projectService.findById(projectId);
 
-    List<Issue> issues = issueRepository.findByProjectId(projectId);
+    List<Issue> issues = issueRepository.findByProjectIdOrderByStatusAscPositionAsc(projectId);
 
     List<Issue> todo = new ArrayList<>();
     List<Issue> inProgress = new ArrayList<>();
