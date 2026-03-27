@@ -17,7 +17,7 @@ export default function Hero() {
 				</p>
 
 				<div className="flex justify-center gap-3">
-					<Button className="p-5 text-[12px] font-bold">
+					<Button className="p-5  font-bold">
 						Start for free <ArrowRight className=" h-4 w-4" />
 					</Button>
 
