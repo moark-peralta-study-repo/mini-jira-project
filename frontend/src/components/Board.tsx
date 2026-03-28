@@ -16,7 +16,7 @@ type BoardProps = {
 
 export default function Board({ data, users }: BoardProps) {
 	return (
-		<div className="grid min-h-125 grid-cols-1 gap-6 md:grid-cols-3">
+		<div className="grid h-128 grid-cols-1 gap-6 md:grid-cols-3">
 			<BoardColumn
 				title="To Do"
 				status={Status.TODO}

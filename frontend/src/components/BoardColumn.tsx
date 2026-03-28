@@ -35,11 +35,11 @@ export default function Column({
 	return (
 		<section
 			ref={ref}
-			className={`flex flex-col gap-4 rounded-xl transition ${
+			className={`flex flex-col h-full min-h-0 rounded-xl transition ${
 				isDropTarget ? "bg-primary/5 ring-2 ring-primary/20" : ""
 			}`}
 		>
-			<div className="mb-2 flex items-center justify-between">
+			<div className="mb-2 flex shrink-0 items-center justify-between">
 				<h3 className="text-sm font-bold uppercase tracking-tight text-muted-foreground">
 					{title}
 				</h3>
@@ -51,15 +51,17 @@ export default function Column({
 				</span>
 			</div>
 
-			{issues.map((issue) => (
-				<DraggableTaskCard
-					key={issue.id}
-					issue={issue}
-					assigneeName={
-						issue.assigneeId ? users[issue.assigneeId]?.name : undefined
-					}
-				/>
-			))}
+			<div className="min-h-0 flex-1 space-y-4 overflow-y-auto pr-1">
+				{issues.map((issue) => (
+					<DraggableTaskCard
+						key={issue.id}
+						issue={issue}
+						assigneeName={
+							issue.assigneeId ? users[issue.assigneeId]?.name : undefined
+						}
+					/>
+				))}
+			</div>
 		</section>
 	);
 }
