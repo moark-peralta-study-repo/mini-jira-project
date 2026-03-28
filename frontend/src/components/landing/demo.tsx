@@ -76,6 +76,16 @@ function findColumn(
 export default function Demo() {
 	const [columns, setColumns] = useState<ColumnsState>(initialColumns);
 
+	const totalCount =
+		columns[Status.TODO].length +
+		columns[Status.IN_PROGRESS].length +
+		columns[Status.DONE].length;
+
+	const doneCount = columns[Status.DONE].length;
+
+	const percentDone =
+		totalCount === 0 ? 0 : Math.round((doneCount / totalCount) * 100);
+
 	const boardData = {
 		todo: columns[Status.TODO],
 		inProgress: columns[Status.IN_PROGRESS],
@@ -105,7 +115,6 @@ export default function Demo() {
 
 					const movingItem = sourceItems[sourceIndex];
 
-					// Dropped directly on a column
 					const droppedOnColumn = Object.values(Status).includes(
 						overId as Status,
 					);
@@ -125,7 +134,6 @@ export default function Demo() {
 						};
 					}
 
-					// Dropped on another card
 					const overIssueId = Number(overId);
 					const targetStatus = findColumn(current, overIssueId);
 
@@ -138,7 +146,6 @@ export default function Demo() {
 
 					if (targetIndex === -1) return current;
 
-					// Same column reorder
 					if (sourceStatus === targetStatus) {
 						const reordered = [...sourceItems];
 						const [removed] = reordered.splice(sourceIndex, 1);
@@ -150,7 +157,6 @@ export default function Demo() {
 						};
 					}
 
-					// Cross-column insert
 					sourceItems.splice(sourceIndex, 1);
 					targetItems.splice(targetIndex, 0, movingItem);
 
@@ -162,7 +168,11 @@ export default function Demo() {
 				});
 			}}
 		>
-			<BoardShowcase data={boardData} users={users} />
+			<BoardShowcase
+				data={boardData}
+				users={users}
+				progressPercent={percentDone}
+			/>
 		</DragDropProvider>
 	);
 }

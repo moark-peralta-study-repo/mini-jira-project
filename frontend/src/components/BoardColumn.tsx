@@ -26,7 +26,7 @@ export default function Column({
 		<section
 			ref={ref}
 			className={`flex flex-col h-full min-h-0 rounded-xl transition ${
-				isDropTarget ? "bg-primary/5 ring-2 ring-primary/20" : ""
+				isDropTarget ? "bg-primary/10 ring-1 ring-primary/30" : ""
 			}`}
 		>
 			<div className="mb-2 flex shrink-0 items-center justify-between">
@@ -42,7 +42,7 @@ export default function Column({
 			</div>
 
 			<div className="min-h-0 flex-1 space-y-4 overflow-y-auto pr-1 py-2">
-				<div className="space-y-4 pr-4">
+				<div className="space-y-4 px-4">
 					{issues.map((issue, index) => (
 						<DraggableTaskCard
 							index={index}

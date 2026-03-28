@@ -22,9 +22,14 @@ type BoardData = {
 type BoardShowcaseProps = {
 	data: BoardData;
 	users: UserMap;
+	progressPercent: number;
 };
 
-export default function BoardShowcase({ data, users }: BoardShowcaseProps) {
+export default function BoardShowcase({
+	data,
+	users,
+	progressPercent,
+}: BoardShowcaseProps) {
 	return (
 		<section className="mx-auto mb-32 max-w-7xl px-8">
 			<div className="rounded-4xl bg-muted/40 p-4 shadow-[0_30px_80px_rgba(0,0,0,0.08)] md:p-8">
@@ -44,10 +49,13 @@ export default function BoardShowcase({ data, users }: BoardShowcaseProps) {
 
 						<div className="flex items-center gap-3">
 							<div className="h-2 w-32 overflow-hidden rounded-full bg-secondary">
-								<div className="h-full w-[65%] bg-primary" />
+								<div
+									className="h-full transition-all bg-primary duration-300"
+									style={{ width: `${progressPercent}%` }}
+								/>
 							</div>
 							<span className="text-[10px] font-bold uppercase tracking-wide text-primary">
-								65% Done
+								{progressPercent}% Done
 							</span>
 						</div>
 					</div>
