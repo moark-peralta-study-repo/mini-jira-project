@@ -42,16 +42,18 @@ export default function Column({
 			</div>
 
 			<div className="min-h-0 flex-1 space-y-4 overflow-y-auto pr-1 py-2">
-				{issues.map((issue, index) => (
-					<DraggableTaskCard
-						index={index}
-						key={issue.id}
-						issue={issue}
-						assigneeName={
-							issue.assigneeId ? users[issue.assigneeId]?.name : undefined
-						}
-					/>
-				))}
+				<div className="space-y-4 pr-4">
+					{issues.map((issue, index) => (
+						<DraggableTaskCard
+							index={index}
+							key={issue.id}
+							issue={issue}
+							assigneeName={
+								issue.assigneeId ? users[issue.assigneeId]?.name : undefined
+							}
+						/>
+					))}
+				</div>
 			</div>
 		</section>
 	);
