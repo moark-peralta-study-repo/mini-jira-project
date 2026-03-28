@@ -17,15 +17,19 @@ export default function TaskCard({
 	return (
 		<motion.div
 			layout
-			whileHover={{ y: -2 }}
 			animate={{
 				scale: isDragging ? 1.03 : 1,
 				rotate: isDragging ? 1.5 : 0,
 			}}
-			transition={{ type: "spring", stiffness: 350, damping: 28 }}
-			className={`rounded-2xl border border-border border-l-4 bg-card p-5 shadow-sm ${getAccent(
-				issue.status,
-			)}`}
+			transition={{
+				layout: { type: "spring", stiffness: 500, damping: 30 },
+				scale: { type: "spring", stiffness: 500, damping: 25 },
+				rotate: { type: "spring", stiffness: 400, damping: 20 },
+			}}
+			className={`relative rounded-2xl border border-border border-l-4 bg-card p-5 shadow-sm cursor-grab active:cursor-grabbing
+		transition-all duration-150 ease-out
+		hover:-translate-y-0.5 hover:shadow-lg hover:z-10
+		${getAccent(issue.status)}`}
 		>
 			<div className="mb-4 flex items-start justify-between">
 				<span

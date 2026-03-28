@@ -40,7 +40,7 @@ export default function Column({
 			}`}
 		>
 			<div className="mb-2 flex shrink-0 items-center justify-between">
-				<h3 className="text-sm font-bold uppercase tracking-tight text-muted-foreground">
+				<h3 className="text-sm font-bold uppercase tracking-tight text-muted-foreground mb-4">
 					{title}
 				</h3>
 
@@ -51,7 +51,7 @@ export default function Column({
 				</span>
 			</div>
 
-			<div className="min-h-0 flex-1 space-y-4 overflow-y-auto pr-1">
+			<div className="min-h-0 flex-1 space-y-4 overflow-y-auto pr-1 py-2">
 				{issues.map((issue) => (
 					<DraggableTaskCard
 						key={issue.id}
