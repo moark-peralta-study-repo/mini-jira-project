@@ -1,18 +1,21 @@
-import { useDraggable } from "@dnd-kit/react";
+import { useSortable } from "@dnd-kit/react/sortable";
 import type { IssueAPIResponse } from "#/types/types";
 import TaskCard from "./TaskCard";
 
 type DraggableTaskCardProps = {
 	issue: IssueAPIResponse;
+	index: number;
 	assigneeName?: string;
 };
 
 export default function DraggableTaskCard({
 	issue,
+	index,
 	assigneeName,
 }: DraggableTaskCardProps) {
-	const { ref, isDragging } = useDraggable({
-		id: String(issue.id),
+	const { ref, isDragging } = useSortable({
+		id: issue.id,
+		index,
 		data: {
 			issueId: issue.id,
 			status: issue.status,
