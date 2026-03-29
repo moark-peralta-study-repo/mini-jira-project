@@ -23,12 +23,7 @@ export default function Column({
 	});
 
 	return (
-		<section
-			ref={ref}
-			className={`flex flex-col h-full min-h-0 rounded-xl transition ${
-				isDropTarget ? "bg-primary/10 ring-1 ring-primary/30" : ""
-			}`}
-		>
+		<section className={`flex flex-col h-full min-h-0 `}>
 			<div className="mb-2 flex shrink-0 items-center justify-between">
 				<h3 className="text-sm font-bold uppercase tracking-tight text-muted-foreground mb-4">
 					{title}
@@ -41,8 +36,13 @@ export default function Column({
 				</span>
 			</div>
 
-			<div className="min-h-0 flex-1 space-y-4 overflow-y-auto pr-1 py-2">
-				<div className="space-y-4 px-4">
+			<div
+				ref={ref}
+				className={`min-h-0 flex-1 rounded-xl  p-2 transition overflow-y-auto ${
+					isDropTarget ? "bg-primary/5 ring-2 ring-primary/20" : ""
+				}`}
+			>
+				<div className="space-y-4 px-4 py-6">
 					{issues.map((issue, index) => (
 						<DraggableTaskCard
 							index={index}
