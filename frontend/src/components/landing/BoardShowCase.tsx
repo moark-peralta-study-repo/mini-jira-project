@@ -1,22 +1,12 @@
-import type { Status } from "#/types/types";
+import type { IssueAPIResponse } from "#/types/types";
 import Board from "./Board";
-
-type Issue = {
-	id: number;
-	title: string;
-	description: string;
-	status: Status;
-	position: number;
-	projectId: number;
-	assigneeId: number | null;
-};
 
 type UserMap = Record<number, { name: string }>;
 
 type BoardData = {
-	todo: Issue[];
-	inProgress: Issue[];
-	done: Issue[];
+	todo: IssueAPIResponse[];
+	inProgress: IssueAPIResponse[];
+	done: IssueAPIResponse[];
 };
 
 type BoardShowcaseProps = {
