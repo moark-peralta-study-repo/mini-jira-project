@@ -22,10 +22,10 @@ export default function BoardShowcase({
 }: BoardShowcaseProps) {
 	return (
 		<section className="mx-auto mb-32 max-w-7xl px-8">
-			<div className="rounded-4xl bg-muted/40 p-4 shadow-[0_30px_80px_rgba(0,0,0,0.08)] md:p-8">
-				<div className="overflow-hidden rounded-3xl border border-border bg-card shadow-2xl">
-					<div className="flex h-14 items-center justify-between border-b border-border bg-muted/50 px-6">
-						<div className="flex items-center gap-4">
+			<div className="rounded-4xl bg-muted/40 p-4  md:p-8">
+				<div className="overflow-hidden rounded-3xl  border-border bg-card shadow-2xl">
+					<div className="flex h-14 items-center justify-between  border-border bg-gray-100 px-6">
+						<div className="flex items-center gap-4 bg-">
 							<div className="flex gap-2">
 								<div className="h-3 w-3 rounded-full bg-red-300" />
 								<div className="h-3 w-3 rounded-full bg-sky-300" />
@@ -44,7 +44,7 @@ export default function BoardShowcase({
 									style={{ width: `${progressPercent}%` }}
 								/>
 							</div>
-							<span className="text-[10px] font-bold uppercase tracking-wide text-primary">
+							<span className="text-[12px] font-bold uppercase tracking-wide text-primary">
 								{progressPercent}% Done
 							</span>
 						</div>
