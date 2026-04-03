@@ -10,8 +10,8 @@
 
 @font-face {
 font-family: "Metropolis";
-src: url("/fonts/Metropolis-Black.woff2") format("woff2"),
-url("/fonts/Metropolis-Medium.woff") format("woff");
+src: url("/font/Metropolis-Black.woff2") format("woff2"),
+url("/font/Metropolis-Black.woff") format("woff");
 font-weight: 900;
 }
 
