@@ -6,6 +6,14 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@utility primary-gradient {
+  background-image: linear-gradient(
+    135deg,
+    var(--color-teal-900),
+    var(--color-teal-600)
+    );
+}
+
 /* ---------------- FONTS ---------------- */
 
 @font-face {
@@ -28,28 +36,28 @@ font-weight: 500;
 
 /* Material Blue Grey */
 --color-blue-grey-50: #eceff1;
---blue-grey-100: #cfd8dc;
---blue-grey-200: #b0bec5;
---blue-grey-300: #90a4ae;
---blue-grey-400: #78909c;
---blue-grey-500: #607d8b;
---blue-grey-600: #546e7a;
---blue-grey-700: #455a64;
---blue-grey-800: #37474f;
---blue-grey-900: #263238;
+--color-blue-grey-100: #cfd8dc;
+--color-blue-grey-200: #b0bec5;
+--color-blue-grey-300: #90a4ae;
+--color-blue-grey-400: #78909c;
+--color-blue-grey-500: #607d8b;
+--color-blue-grey-600: #546e7a;
+--color-blue-grey-700: #455a64;
+--color-blue-grey-800: #37474f;
+--color-blue-grey-900: #263238;
 
 /* Tailwind Teal */
---teal-50:  #f0fdfa;
---teal-100: #ccfbf1;
---teal-200: #99f6e4;
---teal-300: #5eead4;
---teal-400: #2dd4bf;
---teal-500: #14b8a6;
---teal-600: #0d9488;
---teal-700: #0f766e;
---teal-800: #115e59;
---teal-900: #134e4a;
---teal-950: #042f2e;
+--color-teal-50:  #f0fdfa;
+--color-teal-100: #ccfbf1;
+--color-teal-200: #99f6e4;
+--color-teal-300: #5eead4;
+--color-teal-400: #2dd4bf;
+--color-teal-500: #14b8a6;
+--color-teal-600: #0d9488;
+--color-teal-700: #0f766e;
+--color-teal-800: #115e59;
+--color-teal-900: #134e4a;
+--color-teal-950: #042f2e;
 
 /* Core theme tokens */
 
@@ -62,21 +70,21 @@ font-weight: 500;
 --popover: #ffffff;
 --popover-foreground: #0f172a;
 
---primary: var(--teal-600);
+--primary: var(--color-teal-600);
 --primary-foreground: #ffffff;
 
---secondary: var(--blue-grey-100);
---secondary-foreground: var(--blue-grey-900);
+--secondary: var(--color-blue-grey-100);
+--secondary-foreground: var(--color-blue-grey-900);
 
---muted: var(--blue-grey-50);
---muted-foreground: var(--blue-grey-600);
+--muted: var(--color-blue-grey-50);
+--muted-foreground: var(--color-blue-grey-600);
 
---accent: var(--teal-500);
+--accent: var(--color-teal-500);
 --accent-foreground: #ffffff;
 
---border: var(--blue-grey-200);
---input: var(--blue-grey-200);
---ring: var(--teal-500);
+--border: var(--color-blue-grey-200);
+--input: var(--color-blue-grey-200);
+--ring: var(--color-teal-500);
 
 --radius: 0.625rem;
 }
@@ -85,30 +93,30 @@ font-weight: 500;
 
 .dark {
 
---background: var(--blue-grey-900);
---foreground: var(--blue-grey-100);
+--background: var(--color-blue-grey-900);
+--foreground: var(--color-blue-grey-100);
 
 --card: var(--blue-grey-800);
---card-foreground: var(--blue-grey-100);
+--card-foreground: var(--color-blue-grey-100);
 
---popover: var(--blue-grey-800);
---popover-foreground: var(--blue-grey-100);
+--popover: var(--color-blue-grey-800);
+--popover-foreground: var(--color-blue-grey-100);
 
---primary: var(--teal-400);
---primary-foreground: var(--blue-grey-900);
+--primary: var(--color-teal-400);
+--primary-foreground: var(--color-blue-grey-900);
 
---secondary: var(--blue-grey-700);
---secondary-foreground: var(--blue-grey-100);
+--secondary: var(--color-blue-grey-700);
+--secondary-foreground: var(--color-blue-grey-100);
 
---muted: var(--blue-grey-700);
---muted-foreground: var(--blue-grey-300);
+--muted: var(--color-blue-grey-700);
+--muted-foreground: var(--color-blue-grey-300);
 
---accent: var(--teal-400);
---accent-foreground: var(--blue-grey-900);
+--accent: var(--color-teal-400);
+--accent-foreground: var(--color-blue-grey-900);
 
---border: var(--blue-grey-700);
---input: var(--blue-grey-700);
---ring: var(--teal-400);
+--border: var(--color-blue-grey-700);
+--input: var(--color-blue-grey-700);
+--ring: var(--color-teal-400);
 }
 
 /* ---------------- TAILWIND THEME BRIDGE ---------------- */

@@ -1,5 +1,7 @@
+import { motion } from "framer-motion";
 import type { IssueAPIResponse } from "#/types/types";
 import Board from "./Board";
+import { item, shell } from "../motion/variants";
 
 type UserMap = Record<number, { name: string }>;
 
@@ -22,9 +24,17 @@ export default function BoardShowcase({
 }: BoardShowcaseProps) {
 	return (
 		<section className="mx-auto mb-32 max-w-7xl px-8">
-			<div className="rounded-4xl bg-muted/40 p-4  md:p-8">
-				<div className="overflow-hidden rounded-3xl  border-border bg-card shadow-2xl">
-					<div className="flex h-14 items-center justify-between  border-border bg-gray-100 px-6">
+			<motion.div
+				variants={shell}
+				initial="hidden"
+				animate="show"
+				className="relative overflow-hidden rounded-4xl bg-card p-4  md:p-8 shadow-[0_20px_40px_rgba(9, 28, 53, 0.06)]"
+			>
+				<motion.div
+					variants={item}
+					className="overflow-hidden rounded-3xl border-white border bg-card shadow-2xl"
+				>
+					<div className="flex h-14 items-center justify-between border-b border-blue-grey-50  bg-muted px-6">
 						<div className="flex items-center gap-4 bg-">
 							<div className="flex gap-2">
 								<div className="h-3 w-3 rounded-full bg-red-300" />
@@ -50,11 +60,12 @@ export default function BoardShowcase({
 						</div>
 					</div>
 
-					<div className="p-6">
+					<motion.div variants={item} className="p-6">
 						<Board data={data} users={users} />
-					</div>
-				</div>
-			</div>
+						<motion.div />
+					</motion.div>
+				</motion.div>
+			</motion.div>
 		</section>
 	);
 }
