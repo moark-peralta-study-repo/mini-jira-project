@@ -22,7 +22,7 @@ export default function NavBar() {
 					/>
 				))}
 			</div>
-			<div className="flex gap=6">
+			<div className="flex gap-6">
 				{rightLinks.map((link) => (
 					<NavLink key={link} label={link} active={active === link} />
 				))}
