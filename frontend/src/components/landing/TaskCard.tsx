@@ -26,7 +26,7 @@ export default function TaskCard({
 				scale: { type: "spring", stiffness: 500, damping: 25 },
 				rotate: { type: "spring", stiffness: 400, damping: 20 },
 			}}
-			className={`relative rounded-2xl border border-border border-l-4 bg-card p-5 shadow-sm cursor-grab active:cursor-grabbing
+			className={`relative rounded-2xl border border-blue-grey-50 border-l-4 bg-card p-5 shadow-sm cursor-grab active:cursor-grabbing
 		transition-all duration-150 ease-out
 		hover:-translate-y-0.5 hover:shadow-lg hover:z-10
 		${getAccent(issue.status)}`}

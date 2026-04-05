@@ -8,16 +8,19 @@ export default function CTA() {
 						Ready to build something <br />
 						extraordinary?
 					</h2>
-					<p className="text-primary-foreground">
+					<p className="text-primary-foreground text-xl max-w-2xl mx-auto mb-12">
 						Join over 10,000 engineering teams who have traded chaos for the
 						precision of Executive Architect.
 					</p>
 					<button
-						className="bg-background text-primary font-headline font-bold text-lg px-12 py-5 rounded-xl hover:bg-gray-50"
+						className="bg-background text-primary font-headline font-bold text-lg px-12 py-5 rounded-xl hover:bg-gray-50 transition  hover:scale-95 hover:cursor-pointer"
 						type="submit"
 					>
 						Get started for free
 					</button>
+					<p className="mt-8 text-primary-foreground/60 text-sm font-medium tracking-wide uppercase">
+						No credit card required • Unlimited users
+					</p>
 				</div>
 			</div>
 		</section>
