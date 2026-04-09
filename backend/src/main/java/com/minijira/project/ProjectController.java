@@ -8,7 +8,6 @@ import jakarta.validation.Valid;
 import com.minijira.issue.IssueService;
 import com.minijira.project.dto.ProjectBoardResponse;
 import com.minijira.issue.Issue;
-import com.minijira.issue.IssueService;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -57,6 +56,8 @@ public class ProjectController {
   @GetMapping("/{projectId}/board")
   ProjectBoardResponse getProjectBoard(@PathVariable Long projectId) {
     return issueService.getProjectBoard(projectId);
+  }
+
   @GetMapping("/{projectId}/issues")
   List<Issue> findIssuesByProjectId(@PathVariable Long projectId) {
     return issueService.findIssuesByProjectId(projectId);

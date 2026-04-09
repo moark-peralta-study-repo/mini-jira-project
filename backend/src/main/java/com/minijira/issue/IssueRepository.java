@@ -11,8 +11,9 @@ public interface IssueRepository extends ListCrudRepository<Issue, Long> {
   List<Issue> findByProjectIdAndStatus(Long projectId, IssueStatus status);
 
   List<Issue> findByProjectIdOrderByStatusAscPositionAsc(Long projectId);
+
   List<Issue> findIssuesByProjectId(Long projectId);
 
-  List<Issue> findIssueByAsigneeId(Long asigneeId);
+  List<Issue> findIssueByAssigneeId(Long asigneeId);
 
 }

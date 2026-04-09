@@ -168,7 +168,7 @@ public class IssueService {
     return issueRepository.findIssuesByProjectId(projectId);
   }
 
-  public List<Issue> findIssueByAsigneeId(Long asigneeId) {
-    return issueRepository.findIssueByAsigneeId(asigneeId);
+  public List<Issue> findIssueByAsigneeId(Long assigneeId) {
+    return issueRepository.findIssueByAssigneeId(assigneeId);
   }
 }
