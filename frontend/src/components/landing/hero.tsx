@@ -1,9 +1,12 @@
+import { useNavigate } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { Button } from "../ui/button";
 import { fadeUpContainer, fadeUpItem } from "../motion/variants";
+import { Button } from "../ui/button";
 
 export default function Hero() {
+	const navigate = useNavigate({ from: "/" });
+
 	return (
 		<section className="py-28 px-6 text-center">
 			<motion.div
@@ -39,7 +42,10 @@ export default function Hero() {
 					initial="hidden"
 					animate="show"
 				>
-					<Button className="p-7 text-lg font-bold primary-gradient hover:scale-95 hover:cursor-pointer">
+					<Button
+						onClick={() => navigate({ to: "/register" })}
+						className="p-7 text-lg font-bold primary-gradient hover:scale-95 hover:cursor-pointer"
+					>
 						Start for free <ArrowRight className=" h-4 w-4" />
 					</Button>
 				</motion.div>

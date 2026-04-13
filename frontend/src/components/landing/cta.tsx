@@ -1,4 +1,8 @@
+import { useNavigate } from "@tanstack/react-router";
+
 export default function CTA() {
+	const navigate = useNavigate({ from: "/" });
+
 	return (
 		<section className="max-w-7xl mx-auto px-8 py-32 ">
 			<div className="primary-gradient rounded-[3rem] p-12 md:p-24 text-center overflow-hidden text-primary-foreground">
@@ -15,6 +19,11 @@ export default function CTA() {
 					<button
 						className="bg-background text-primary font-headline font-bold text-lg px-12 py-5 rounded-xl hover:bg-gray-50 transition  hover:scale-95 hover:cursor-pointer"
 						type="submit"
+						onClick={() =>
+							navigate({
+								to: "/register",
+							})
+						}
 					>
 						Get started for free
 					</button>
