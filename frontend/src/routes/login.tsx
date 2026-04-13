@@ -1,8 +1,7 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { DraftingCompass, Eye, Form } from "lucide-react";
-import { Input } from "#/components/ui/input";
-import PasswordField from "#/components/ui/PasswordField";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { DraftingCompass } from "lucide-react";
 import FormField from "#/components/ui/FormField";
+import PasswordField from "#/components/ui/PasswordField";
 
 export const Route = createFileRoute("/login")({
 	component: RouteComponent,
@@ -98,12 +97,12 @@ function RouteComponent() {
 								id="password"
 								label="Password"
 								labelRight={
-									<a
-										href="/forgot"
+									<Link
+										to="."
 										className="text-xs font-bold text-primary hover:underline"
 									>
 										Forgot Password?
-									</a>
+									</Link>
 								}
 							/>
 
@@ -127,12 +126,12 @@ function RouteComponent() {
 								Terms of Service
 							</a>{" "}
 							and{" "}
-							<a
+							<Link
 								className="text-primary font-semibold hover:underline"
-								href="/privacy-policy"
+								to="."
 							>
 								Privacy Policy
-							</a>
+							</Link>
 							.
 						</p>
 
@@ -140,12 +139,12 @@ function RouteComponent() {
 						<div className="mt-4 text-center">
 							<p className="text-sm text-muted-foreground">
 								Don't have an account?{" "}
-								<a
+								<Link
 									className="text-primary font-bold hover:underline hover:cursor-pointer"
-									href="/register"
+									to="/register"
 								>
 									Sign up
-								</a>
+								</Link>
 							</p>
 						</div>
 					</header>

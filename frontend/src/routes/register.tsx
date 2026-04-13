@@ -1,6 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { DraftingCompass, Eye } from "lucide-react";
-import { Input } from "#/components/ui/input";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { DraftingCompass } from "lucide-react";
 import FormField from "#/components/ui/FormField";
 import PasswordField from "#/components/ui/PasswordField";
 
@@ -115,19 +114,19 @@ function RouteComponent() {
 						<p className="mt-7 text-center text-xs text-muted-foreground leading-relaxed">
 							By creating an account, you agree to our{" "}
 							{/** TODO fix links probably */}
-							<a
+							<Link
 								className="text-primary font-semibold hover:underline"
-								href="/terms-of-service"
+								to="."
 							>
 								Terms of Service
-							</a>{" "}
+							</Link>{" "}
 							and{" "}
-							<a
+							<Link
 								className="text-primary font-semibold hover:underline"
-								href="/privacy-policy"
+								to="."
 							>
 								Privacy Policy
-							</a>
+							</Link>
 							.
 						</p>
 
@@ -135,12 +134,12 @@ function RouteComponent() {
 						<div className="mt-4 text-center">
 							<p className="text-sm text-muted-foreground">
 								Already have an account?{" "}
-								<a
+								<Link
 									className="text-primary font-bold hover:underline hover:cursor-pointer"
-									href="/login"
+									to="/login"
 								>
 									Sign in
-								</a>
+								</Link>
 							</p>
 						</div>
 					</header>
