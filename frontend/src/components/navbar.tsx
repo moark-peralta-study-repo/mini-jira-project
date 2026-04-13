@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import NavLink from "./navlink";
 
@@ -10,9 +11,12 @@ export default function NavBar() {
 	return (
 		<nav className="flex justify-between ">
 			<div className="flex gap-6">
-				<h1 className="text-xl font-bold font-metropolis text-teal-700">
+				<Link
+					to="/"
+					className="text-xl font-bold font-metropolis text-teal-700"
+				>
 					Executive Architect
-				</h1>
+				</Link>
 				{leftLinks.map((link) => (
 					<NavLink
 						key={link}
