@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { DraftingCompass } from "lucide-react";
+import { useState } from "react";
 import FormField from "#/components/ui/FormField";
 import PasswordField from "#/components/ui/PasswordField";
 
@@ -8,6 +9,45 @@ export const Route = createFileRoute("/register")({
 });
 
 function RouteComponent() {
+	const [fullname, setFullname] = useState("");
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+	const [confirmPassword, setConfirmPassword] = useState("");
+	const [error, setError] = useState("");
+
+	async function handleSubmit(e: React.SubmitEvent<HTMLFormElement>) {
+		e.preventDefault();
+
+		console.log("Data:", { fullname, email, password });
+
+		if (password !== confirmPassword) {
+			setError("Passwords do not match");
+			return;
+		}
+
+		try {
+			const response = await fetch("http://localhost:8080/api/auth/register", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+					name: fullname,
+					email,
+					password,
+				}),
+			});
+
+			if (!response.ok) {
+				const error = await response.text();
+				console.log("Registration failed:", error);
+				return;
+			}
+		} catch (err) {
+			console.log("Network error:", err);
+		}
+	}
+
 	return (
 		<main className="grow flex flex-col md:flex-row overflow-hidden">
 			<section className="hidden md:flex md:w-1/2 relative flex-col justify-center items-center p-16 overflow-hidden">
@@ -85,8 +125,13 @@ function RouteComponent() {
 							</div>
 						</div>
 
-						<form className="space-y-5">
+						<form className="space-y-5" onSubmit={handleSubmit}>
 							<FormField
+								value={fullname}
+								onChange={(e) => {
+									console.log(e.target.value);
+									setFullname(e.target.value);
+								}}
 								id="name"
 								label={"Full Name"}
 								type="text"
@@ -94,12 +139,31 @@ function RouteComponent() {
 							/>
 
 							<FormField
+								value={email}
+								onChange={(e) => {
+									setEmail(e.target.value);
+								}}
 								id="email"
 								label="Work Email"
 								type="text"
 								placeholder="j.doe@executive.com"
 							/>
-							<PasswordField id="password" label="Password" />
+
+							<PasswordField
+								id="password"
+								label="Password"
+								value={password}
+								onChange={(e) => setPassword(e.target.value)}
+							/>
+
+							{error && <p className="text-red-500 text-sm">{error}</p>}
+
+							<PasswordField
+								id="confirm-password"
+								label="Confirm Password"
+								value={confirmPassword}
+								onChange={(e) => setConfirmPassword(e.target.value)}
+							/>
 
 							<div className="pt-2">
 								<button

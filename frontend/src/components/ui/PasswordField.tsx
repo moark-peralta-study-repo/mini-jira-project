@@ -1,5 +1,5 @@
 import { Eye, EyeOff } from "lucide-react";
-import react, { type ReactNode } from "react";
+import react, { type InputHTMLAttributes, type ReactNode } from "react";
 import FormField from "./FormField";
 
 type PasswordFieldProps = {
@@ -7,13 +7,14 @@ type PasswordFieldProps = {
 	label: string;
 	placeholder?: string;
 	labelRight?: ReactNode;
-};
+} & InputHTMLAttributes<HTMLInputElement>;
 
 export default function PasswordField({
 	id,
 	label,
 	placeholder = "••••••••",
 	labelRight,
+	...inputProps
 }: PasswordFieldProps) {
 	const [showPassword, setShowPassword] = react.useState(false);
 
@@ -34,6 +35,7 @@ export default function PasswordField({
 					{showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
 				</button>
 			}
+			{...inputProps}
 		/>
 	);
 }
