@@ -178,10 +178,8 @@ function RouteComponent() {
 								label="Full Name"
 								type="text"
 								placeholder="John Doe"
+								error={errors.fullname}
 							/>
-							{errors.fullname && (
-								<p className="text-red-500 text-sm">{errors.fullname}</p>
-							)}
 
 							<FormField
 								value={email}
@@ -190,34 +188,24 @@ function RouteComponent() {
 								label="Work Email"
 								type="email"
 								placeholder="j.doe@executive.com"
+								error={errors.email}
 							/>
-							{errors.email && (
-								<p className="text-red-500 text-sm">{errors.email}</p>
-							)}
 
 							<PasswordField
 								id="password"
 								label="Password"
 								value={password}
 								onChange={(e) => setPassword(e.target.value)}
+								error={errors.password}
 							/>
-							{errors.password && (
-								<p className="text-red-500 text-sm">{errors.password}</p>
-							)}
 
 							<PasswordField
 								id="confirm-password"
 								label="Confirm Password"
 								value={confirmPassword}
 								onChange={(e) => setConfirmPassword(e.target.value)}
+								error={errors.confirmPassword}
 							/>
-							{errors.confirmPassword && (
-								<p className="text-red-500 text-sm">{errors.confirmPassword}</p>
-							)}
-
-							{errors.general && (
-								<p className="text-red-500 text-sm">{errors.general}</p>
-							)}
 
 							<div className="pt-2">
 								<button

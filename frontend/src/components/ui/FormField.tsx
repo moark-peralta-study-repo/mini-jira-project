@@ -9,6 +9,7 @@ type TextFieldProps = {
 	wrapperClassName?: string;
 	labelClassName?: string;
 	inputClassName?: string;
+	error?: string;
 	labelRight?: ReactNode;
 } & InputHTMLAttributes<HTMLInputElement>;
 
@@ -23,6 +24,7 @@ export default function FormField({
 	labelClassName,
 	inputClassName,
 	labelRight,
+	error,
 	className,
 	...inputProps
 }: TextFieldProps) {
@@ -49,11 +51,18 @@ export default function FormField({
 						baseInputClassName,
 						rightSlot && "pr-12",
 						inputClassName,
+						error && "ring-2 ring-red-500/50 focus:ring-red-500/40",
 						className,
 					)}
 					id={id}
 					{...inputProps}
 				/>
+				{error ? (
+					<p className="px-1 py-2 text-xs font-medium leading-tight text-red-500">
+						{error}
+					</p>
+				) : null}
+
 				{rightSlot ? (
 					<div className="absolute inset-y-0 right-4 flex items-center">
 						{rightSlot}

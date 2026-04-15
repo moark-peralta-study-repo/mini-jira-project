@@ -7,11 +7,13 @@ type PasswordFieldProps = {
 	label: string;
 	placeholder?: string;
 	labelRight?: ReactNode;
+	error?: string;
 } & InputHTMLAttributes<HTMLInputElement>;
 
 export default function PasswordField({
 	id,
 	label,
+	error,
 	placeholder = "••••••••",
 	labelRight,
 	...inputProps
@@ -22,6 +24,7 @@ export default function PasswordField({
 		<FormField
 			id={id}
 			label={label}
+			error={error}
 			labelRight={labelRight}
 			type={showPassword ? "text" : "password"}
 			placeholder={placeholder}
