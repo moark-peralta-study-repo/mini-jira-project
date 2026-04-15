@@ -1,6 +1,7 @@
 package com.minijira.auth;
 
 import com.minijira.auth.dto.AuthResponse;
+import com.minijira.auth.dto.LoginRequest;
 import com.minijira.auth.dto.RegisterRequest;
 
 import org.springframework.http.HttpStatus;
@@ -24,5 +25,10 @@ public class AuthController {
   @ResponseStatus(HttpStatus.CREATED)
   public AuthResponse register(@RequestBody RegisterRequest request) {
     return authService.register(request);
+  }
+
+  @PostMapping("/login")
+  public AuthResponse login(@RequestBody LoginRequest request) {
+    return authService.login(request);
   }
 }
