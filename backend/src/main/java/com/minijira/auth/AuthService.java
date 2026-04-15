@@ -3,6 +3,7 @@ package com.minijira.auth;
 import java.time.Instant;
 
 import com.minijira.auth.dto.AuthResponse;
+import com.minijira.auth.dto.LoginRequest;
 import com.minijira.auth.dto.RegisterRequest;
 import com.minijira.user.AppUser;
 import com.minijira.user.UserRepository;
@@ -20,13 +21,28 @@ public class AuthService {
     this.passwordEncoder = passwordEncoder;
   }
 
+  public AuthResponse login(LoginRequest request) {
+    AppUser user = userRepository.findByEmail(request.email()).orElseThrow(InvalidCredentialsException::new);
+
+    boolean valid = passwordEncoder.matches(request.password(), user.getPasswordHash());
+
+    if (!valid) {
+      throw new InvalidCredentialsException();
+    }
+
+    return new AuthResponse(
+        user.getId(),
+        user.getName(),
+        user.getEmail());
+  }
+
   public AuthResponse register(RegisterRequest request) {
     System.out.println("Register called");
     System.out.println("Email: " + request.email());
 
     if (userRepository.existsByEmail(request.email())) {
       System.out.println("Email already exists");
-      throw new RuntimeException("Email already in use");
+      throw new EmailAlreadyInUseException();
     }
 
     System.out.println("Creating user");
