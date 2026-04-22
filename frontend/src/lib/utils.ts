@@ -39,3 +39,28 @@ export function getBadge(status: Status) {
 			return "bg-muted text-muted-foreground line-through";
 	}
 }
+
+export async function login(email: string, password: string) {
+	const res = await fetch("http://localhost:8080/api/auth/login", {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		credentials: "include",
+		body: JSON.stringify({ email, password }),
+	});
+
+	if (!res.ok) {
+		throw new Error("Invalid credentials");
+	}
+
+	return res.json();
+}
+
+export async function isAuthenticated() {
+	const res = await fetch("http://localhost:8080/api/auth/me", {
+		credentials: "include",
+	});
+
+	return res.ok;
+}

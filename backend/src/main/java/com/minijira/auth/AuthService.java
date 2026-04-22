@@ -21,7 +21,7 @@ public class AuthService {
     this.passwordEncoder = passwordEncoder;
   }
 
-  public AuthResponse login(LoginRequest request) {
+  public AppUser login(LoginRequest request) {
     AppUser user = userRepository.findByEmail(request.email()).orElseThrow(InvalidCredentialsException::new);
 
     boolean valid = passwordEncoder.matches(request.password(), user.getPasswordHash());
@@ -30,10 +30,7 @@ public class AuthService {
       throw new InvalidCredentialsException();
     }
 
-    return new AuthResponse(
-        user.getId(),
-        user.getName(),
-        user.getEmail());
+    return user;
   }
 
   public AuthResponse register(RegisterRequest request) {
