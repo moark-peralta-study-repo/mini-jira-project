@@ -1,4 +1,5 @@
 import { createFileRoute, Outlet, redirect } from "@tanstack/react-router";
+import AppHeader from "#/components/ui/AppHeader";
 import { isAuthenticated } from "#/lib/utils";
 
 export const Route = createFileRoute("/_authenticated")({
@@ -18,5 +19,10 @@ export const Route = createFileRoute("/_authenticated")({
 });
 
 function RouteComponent() {
-	return <Outlet />;
+	return (
+		<>
+			<AppHeader />
+			<Outlet />
+		</>
+	);
 }
