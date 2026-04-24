@@ -19,7 +19,7 @@ export default function SideBarNav() {
 								className:
 									"bg-blue-grey-50 text-blue-grey-800 [&_svg]:text-primary",
 							}}
-							className="flex items-center gap-6 rounded-sm px-6 py-3 text-base font-medium text-muted-foreground transition-all duration-300 hover:bg-blue-grey-50 hover:text-blue-grey-800 [&_svg]:h-6 [&_svg]:text-blue-grey-400 [&_svg]:transition-all [&_svg]:duration-300 hover:[&_svg]:text-primary"
+							className="flex items-center gap-6 rounded-sm px-6 py-2 text-base font-medium text-muted-foreground transition-all duration-300 hover:bg-blue-grey-50 hover:text-blue-grey-800 [&_svg]:h-6 [&_svg]:text-blue-grey-400 [&_svg]:transition-all [&_svg]:duration-300 hover:[&_svg]:text-primary"
 						>
 							<Icon />
 							<span>{label}</span>
