@@ -1,16 +1,22 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import FormField from "#/components/ui/FormField";
 import LeftAuthSection from "#/components/ui/LeftAuthSection";
 import PasswordField from "#/components/ui/PasswordField";
 
 export const Route = createFileRoute("/login")({
+	validateSearch: (search: Record<string, unknown>) => ({
+		redirect: typeof search.redirect === "string" ? search.redirect : undefined,
+	}),
 	component: RouteComponent,
 });
 
 function RouteComponent() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+
+	const navigate = useNavigate();
+	const search = Route.useSearch();
 
 	async function handleSubmit(e: React.SubmitEvent<HTMLFormElement>) {
 		e.preventDefault();
@@ -21,6 +27,7 @@ function RouteComponent() {
 				headers: {
 					"Content-Type": "application/json",
 				},
+				credentials: "include",
 				body: JSON.stringify({
 					email,
 					password,
@@ -39,6 +46,10 @@ function RouteComponent() {
 			}
 			const data = await response.json();
 			console.log("Login success:", data);
+
+			await navigate({
+				to: search.redirect || "/projects",
+			});
 		} catch (err) {
 			console.log("Network error:", err);
 		}

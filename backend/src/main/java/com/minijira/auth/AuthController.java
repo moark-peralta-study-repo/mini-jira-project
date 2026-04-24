@@ -1,10 +1,17 @@
 package com.minijira.auth;
 
+import java.util.Map;
+
+import jakarta.servlet.http.HttpSession;
+
 import com.minijira.auth.dto.AuthResponse;
 import com.minijira.auth.dto.LoginRequest;
 import com.minijira.auth.dto.RegisterRequest;
+import com.minijira.user.AppUser;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,7 +35,29 @@ public class AuthController {
   }
 
   @PostMapping("/login")
-  public AuthResponse login(@RequestBody LoginRequest request) {
-    return authService.login(request);
+  public AuthResponse login(@RequestBody LoginRequest request, HttpSession session) {
+    AppUser user = authService.login(request);
+
+    session.setAttribute("userId", user.getId());
+    session.setAttribute("userEmail", user.getEmail());
+
+    return new AuthResponse(
+        user.getId(),
+        user.getName(),
+        user.getEmail());
+  }
+
+  @GetMapping("/me")
+  public ResponseEntity<?> me(HttpSession session) {
+    Long userId = (Long) session.getAttribute("userId");
+    String userEmail = (String) session.getAttribute("userEmail");
+
+    if (userId == null) {
+      return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+    }
+
+    return ResponseEntity.ok(Map.of(
+        "id", userId,
+        "email", userEmail));
   }
 }
