@@ -1,13 +1,12 @@
 import { Link } from "@tanstack/react-router";
-import { useState } from "react";
 import NavLink from "./navlink";
 
-const leftLinks = ["Home", "About", "Projects"];
-const rightLinks = ["Login", "Signup"];
+const rightLinks = [
+	{ label: "Login", to: "/login" },
+	{ label: "Signup", to: "/register" },
+];
 
 export default function NavBar() {
-	const [active, setActive] = useState("Home");
-
 	return (
 		<nav className="flex justify-between ">
 			<div className="flex gap-6">
@@ -17,18 +16,10 @@ export default function NavBar() {
 				>
 					Executive Architect
 				</Link>
-				{leftLinks.map((link) => (
-					<NavLink
-						key={link}
-						label={link}
-						active={active === link}
-						onMouseEnter={() => setActive(link)}
-					/>
-				))}
 			</div>
 			<div className="flex gap-6">
 				{rightLinks.map((link) => (
-					<NavLink key={link} label={link} active={active === link} />
+					<NavLink key={link.to} {...link} />
 				))}
 			</div>
 		</nav>
