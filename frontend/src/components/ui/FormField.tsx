@@ -33,7 +33,7 @@ export default function FormField({
 			<div className="flex items-center justify-between px-1">
 				<label
 					className={cn(
-						"text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1",
+						"ml-1 text-xs font-bold uppercase tracking-widest text-muted-foreground",
 						labelClassName,
 					)}
 					htmlFor={id}
@@ -57,11 +57,6 @@ export default function FormField({
 					id={id}
 					{...inputProps}
 				/>
-				{error ? (
-					<p className="px-1 py-2 text-xs font-medium leading-tight text-red-500">
-						{error}
-					</p>
-				) : null}
 
 				{rightSlot ? (
 					<div className="absolute inset-y-0 right-4 flex items-center">
@@ -69,6 +64,12 @@ export default function FormField({
 					</div>
 				) : null}
 			</div>
+
+			{error ? (
+				<p className="px-1 py-2 text-xs font-medium leading-tight text-red-500">
+					{error}
+				</p>
+			) : null}
 		</div>
 	);
 }
