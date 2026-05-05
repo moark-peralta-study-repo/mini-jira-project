@@ -2,8 +2,6 @@ package com.minijira.project;
 
 import java.util.List;
 
-import com.minijira.issue.IssueNotFoundException;
-
 import org.springframework.stereotype.Service;
 
 @Service
@@ -20,7 +18,7 @@ public class ProjectService {
   }
 
   public Project findById(Long id) {
-    return projectRepository.findById(id).orElseThrow(() -> new IssueNotFoundException(id));
+    return projectRepository.findById(id).orElseThrow(() -> new ProjectNotFoundException(id));
   }
 
   public void createProject(Project project) {
@@ -29,7 +27,7 @@ public class ProjectService {
 
   public void deleteProject(Long id) {
     if (!projectRepository.existsById(id)) {
-      throw new IssueNotFoundException(id);
+      throw new ProjectNotFoundException(id);
     }
     projectRepository.deleteById(id);
   }
